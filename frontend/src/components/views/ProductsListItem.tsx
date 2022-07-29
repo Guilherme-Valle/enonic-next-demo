@@ -9,7 +9,7 @@ import { addToCart, removeFromCart } from '../../store/cartSlice';
 export default function ProductsListItem(props: ProductType) {
     const dispatch = useDispatch();
     const handleAddProduct = () => { dispatch(addToCart(props)) };
-    const handleRemoveProduct = () => { dispatch(removeFromCart(props)) };
+    const handleRemoveProduct = () => { dispatch(removeFromCart(props.id)) };
 
     return (
         <div className={styles.ProductsListItem}>

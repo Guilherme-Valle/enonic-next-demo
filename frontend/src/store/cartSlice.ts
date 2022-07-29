@@ -13,10 +13,11 @@ export const cartSlice = createSlice({
         addToCart(state: any, action: PayloadAction<ProductType>) {
             state.products.push(action.payload);
         },
-        removeFromCart(state: any, action: PayloadAction<ProductType>) {
-            const product = action.payload;
+        removeFromCart(state: any, action: PayloadAction<string>) {
+            const productId = action.payload;
+            
             for (let i = 0; i < state.products.length; i++) {
-                if (state.products[i].id === product.id) {
+                if (state.products[i].id === productId) {
                     state.products.splice(i, 1);
                     break;
                 }

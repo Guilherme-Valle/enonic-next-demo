@@ -3,7 +3,11 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { selectCartState } from '../../store/cartSlice';
 import { useSelector } from 'react-redux'
 
-export default function CartFloatButton() {
+interface FloatButtonType {
+    handleClick: any
+}
+
+export default function CartFloatButton(props: FloatButtonType) {
     const cartState = useSelector(selectCartState);
 
     const transitionDuration = {
@@ -16,7 +20,9 @@ export default function CartFloatButton() {
             timeout={transitionDuration}
             key={1}
             unmountOnExit>
-            <Fab variant='extended' color='primary'
+            <Fab variant='extended' 
+                color='primary'
+                onClick={props.handleClick}
                 size='large'
                 sx={{
                     position: 'fixed',

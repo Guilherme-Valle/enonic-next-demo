@@ -1,13 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { APP_NAME_UNDERSCORED, getUrl } from '../../_enonicAdapter/utils'
 import { PartProps } from '../../_enonicAdapter/views/BasePart';
-import { Context } from '../../pages/[[...contentPath]]';
-import { VariablesGetterResult } from '../../_enonicAdapter/ComponentRegistry';
 import styles from '../../styles/ProductsList.module.css'
 import ProductsListItem from '../views/ProductsListItem';
-import { useSelector } from 'react-redux';
-import { selectCartState } from '../../store/cartSlice';
 import CartFloatButton from '../views/CartFloatButton';
+import CartDialog from '../views/CartDialog';
 
 export const getProductsList = `
    query(){ 
@@ -44,6 +41,10 @@ export interface ProductType {
 
 const ProductsList = (props: PartProps) => {
     const { data } = props;
+    const [dialogOpened, setModalOpened] = useState(false);
+
+    const openDialog = () => { setModalOpened(true); }
+    const closeDialog = () => { setModalOpened(false); }
 
     return (
         <>
@@ -52,7 +53,10 @@ const ProductsList = (props: PartProps) => {
                     return <ProductsListItem key={product.id} {...product.data} id={product.id} />
                 })}
             </div>
-            <CartFloatButton />
+
+            <CartFloatButton handleClick={openDialog} />
+
+            <CartDialog open={dialogOpened} handleClose={closeDialog} />
         </>
     )
 }
