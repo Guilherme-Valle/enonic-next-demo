@@ -23,6 +23,7 @@ export default function CartDialog(props: DialogType) {
         return Array.from(new Set(array.map(item => JSON.stringify(item)))).map(item => JSON.parse(item));
     }
 
+    // TODO THIS FUNCTION NEED TO BE CENTRALIZED
     const countProductOnCart = (id: string) => {
         let counter = 0;
         cartState.forEach((product: ProductType) => {

@@ -11,19 +11,32 @@ export const cartSlice = createSlice({
     initialState,
     reducers: {
         addToCart(state: any, action: PayloadAction<ProductType>) {
-            state.products.push(action.payload);
+            const newProductsArray = [...state.products];
+
+            newProductsArray.push(action.payload);
+
+            return {
+                ...state,
+                products: newProductsArray
+            }
         },
         removeFromCart(state: any, action: PayloadAction<string>) {
             const productId = action.payload;
-            
-            for (let i = 0; i < state.products.length; i++) {
-                if (state.products[i].id === productId) {
-                    state.products.splice(i, 1);
+
+            const newProductsArray = [...state.products];
+
+            for (let i = 0; i < newProductsArray.length; i++) {
+                if (newProductsArray[i].id === productId) {
+                    newProductsArray.splice(i, 1);
                     break;
                 }
             }
-        }
 
+            return {
+                ...state,
+                products: newProductsArray
+            }
+        }
     }
 });
 

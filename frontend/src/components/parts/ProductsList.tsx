@@ -45,6 +45,7 @@ const ProductsList = (props: PartProps) => {
 
     const openDialog = () => { setModalOpened(true); }
     const closeDialog = () => { setModalOpened(false); }
+    
 
     return (
         <>
