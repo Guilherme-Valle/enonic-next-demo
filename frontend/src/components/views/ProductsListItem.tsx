@@ -5,12 +5,24 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import { Button, IconButton } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, removeFromCart, selectCartState } from '../../store/cartSlice';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import { useState } from 'react';
 
 export default function ProductsListItem(props: ProductType) {
     const cartState = useSelector(selectCartState);
     const dispatch = useDispatch();
+    const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
     const handleAddProduct = () => { dispatch(addToCart(props)) };
     const handleRemoveProduct = () => { dispatch(removeFromCart(props.id)) };
+
+    const handleNextImage = () => {
+        setCurrentPhotoIndex(currentPhotoIndex + 1);
+    }
+
+    const handlePreviousImage = () => {
+        setCurrentPhotoIndex(currentPhotoIndex - 1);
+    }
 
     // TODO THIS FUNCTION NEEDS TO BE CENTRALIZED
     const countProductOnCart = (id: string) => {
@@ -29,10 +41,27 @@ export default function ProductsListItem(props: ProductType) {
     return (
         <div className={styles.ProductsListItem}>
             <div className={styles.ProductsListItem__images}>
-                {props && props.photos && props.photos[0] ?
-                    <img src={props.photos[0].imageUrl}
-                        style={{ width: '100%', height: '100%' }}
-                        title={props.name}></img> : ''}
+                <div className={styles.ProductsListItem__images__next}>
+                    {
+                        props.photos.length > 1 && currentPhotoIndex < props.photos.length - 1 ?
+                            <IconButton onClick={handleNextImage}>
+                                <NavigateNextIcon sx={{ color: 'black' }} />
+                            </IconButton> : ''
+                    }
+                </div>
+                <div className={styles.ProductsListItem__images__before}>
+                    {
+                        props.photos.length > 1 && currentPhotoIndex > 0 ?
+                            <IconButton onClick={handlePreviousImage}>
+                                <NavigateBeforeIcon sx={{ color: 'black' }} />
+                            </IconButton> : ''
+                    }
+                </div>
+
+                <img src={props.photos[currentPhotoIndex].imageUrl}
+                    style={{ width: '100%', height: '100%' }}
+                    title={props.name}></img>
+
             </div>
             <div className={styles.ProductsListItem__actions}>
                 <div>

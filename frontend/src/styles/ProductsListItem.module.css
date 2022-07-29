@@ -10,6 +10,7 @@
 .ProductsListItem__images {
     height: 90%;
     width: 100%;
+    position: relative;
 }
 
 .ProductsListItem__actions {
@@ -20,4 +21,15 @@
     text-align: center;
     align-items: center;
 	align-content: center;
+}
+
+.ProductsListItem__images__before {
+    position: absolute;
+    margin-top: 90px;
+}
+
+.ProductsListItem__images__next {
+    position: absolute;
+    margin-top: 90px;
+    right: 0;
 }
