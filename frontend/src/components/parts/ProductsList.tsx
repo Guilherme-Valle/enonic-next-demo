@@ -7,6 +7,7 @@ import styles from '../../styles/ProductsList.module.css'
 import ProductsListItem from '../views/ProductsListItem';
 import { useSelector } from 'react-redux';
 import { selectCartState } from '../../store/cartSlice';
+import CartFloatButton from '../views/CartFloatButton';
 
 export const getProductsList = `
    query(){ 
@@ -45,11 +46,14 @@ const ProductsList = (props: PartProps) => {
     const { data } = props;
 
     return (
-        <div className={styles.ProductsList}>
-            {data.query.map((product: any) => {
-                return <ProductsListItem key={product.id} {...product.data} id={product.id} />
-            })}
-        </div>
+        <>
+            <div className={styles.ProductsList}>
+                {data.query.map((product: any) => {
+                    return <ProductsListItem key={product.id} {...product.data} id={product.id} />
+                })}
+            </div>
+            <CartFloatButton />
+        </>
     )
 }
 
