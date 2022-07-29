@@ -9,6 +9,10 @@ import Heading from './parts/Heading';
 import TwoColumnLayout from './layouts/TwoColumnLayout';
 import MovieDetails, {getMovie} from './parts/MovieDetails';
 import ChildList, {childListProcessor, getChildList} from './parts/ChildList';
+import getProduct from './queries/getProduct';
+import Product from './views/Product';
+import { getProductsList } from './parts/ProductsList';
+import ProductsList from './parts/ProductsList';
 
 // You can set common query for all views here
 ComponentRegistry.setCommonQuery([commonQuery, commonVariables]);
@@ -19,6 +23,10 @@ ComponentRegistry.addContentType(`${APP_NAME}:person`, {
     view: Person
 });
 
+ComponentRegistry.addContentType(`${APP_NAME}:product`, {
+    query: getProduct,
+    view: Product
+});
 
 // Page mappings
 ComponentRegistry.addPage(`${APP_NAME}:main`, {
@@ -46,6 +54,11 @@ ComponentRegistry.addPart(`${APP_NAME}:heading`, {
 ComponentRegistry.addPart(`${APP_NAME}:movie-details`, {
     query: getMovie,
     view: MovieDetails
+});
+
+ComponentRegistry.addPart(`${APP_NAME}:products-list`, {
+    query: getProductsList,
+    view: ProductsList
 });
 
 // // Debug

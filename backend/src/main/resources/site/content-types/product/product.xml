@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content-type>
+  <display-name>Product</display-name>
+  <description>Item that can be selled</description>
+  <super-type>base:structured</super-type>
+  <form>
+    <input type="TextLine" name="name">
+        <label>Name</label>
+        <occurrences minimum="1" maximum="1"/>
+    </input>
+    <input type="TextArea" name="description">
+        <label>Description</label>
+        <occurrences minimum="0" maximum="1"/>
+    </input>
+    <input type="Double" name="price">
+        <label>Price</label>
+        <default>0.00</default>
+        <min>0</min>
+        <occurrences minimum="1" maximum="1"/>
+    </input>
+    <input type="ImageSelector" name="photos">
+        <label>Photos</label>
+        <occurrences minimum="1" maximum="0"/>
+    </input>
+  </form>
+</content-type>

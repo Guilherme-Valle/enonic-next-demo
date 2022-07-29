@@ -34,7 +34,7 @@ const Header = ({title, logoUrl}: HeaderProps) => {
                             textDecoration: `none`,
                         }}
                         >
-                            {title}
+                            {title} + Redux
                         </a>
                     </Link>
                 </h1>
