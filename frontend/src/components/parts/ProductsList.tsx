@@ -5,6 +5,8 @@ import { Context } from '../../pages/[[...contentPath]]';
 import { VariablesGetterResult } from '../../_enonicAdapter/ComponentRegistry';
 import styles from '../../styles/ProductsList.module.css'
 import ProductsListItem from '../views/ProductsListItem';
+import { useSelector } from 'react-redux';
+import { selectCartState } from '../../store/cartSlice';
 
 export const getProductsList = `
    query(){ 
@@ -32,6 +34,7 @@ export const getProductsList = `
 }`
 
 export interface ProductType {
+    id: string,
     name: string,
     description: string,
     price: number,
@@ -40,11 +43,11 @@ export interface ProductType {
 
 const ProductsList = (props: PartProps) => {
     const { data } = props;
-    console.log(data.query);
+
     return (
         <div className={styles.ProductsList}>
             {data.query.map((product: any) => {
-                return <ProductsListItem {...product.data} />
+                return <ProductsListItem key={product.id} {...product.data} id={product.id} />
             })}
         </div>
     )

@@ -4,6 +4,7 @@ import React from 'react';
 import {getUrl, RENDER_MODE, XP_REQUEST_TYPE} from "../_enonicAdapter/utils";
 import Header from '../components/views/Header';
 import Footer from '../components/views/Footer';
+import { wrapper } from '../store/store';
 /**
  * Wraps all rendered components
  * @param Component Usually triggering [[...contentPath]].tsx, this component is BasePage.tsx
@@ -40,4 +41,4 @@ function MyApp({Component, pageProps}: AppProps) {
 
 }
 
-export default MyApp
+export default wrapper.withRedux(MyApp)
