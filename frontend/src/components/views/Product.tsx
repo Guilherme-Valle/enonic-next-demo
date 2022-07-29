@@ -28,7 +28,6 @@ const Product = (props: FetchContentResult) => {
                     ))
                 }
             </div>
-            <p><a href={getUrl(_path)}>Back to Products</a></p>
         </>
     )
 }
