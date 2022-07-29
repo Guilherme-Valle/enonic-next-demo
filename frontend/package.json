@@ -11,15 +11,21 @@
     "lint": "npx next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/material": "^5.9.2",
     "html-react-parser": "^2.0.0",
+    "install": "^0.13.0",
     "next": "^12.2.2",
+    "npm": "^8.15.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "unescape": "^1.0.1"
   },
   "devDependencies": {
-    "@types/node": "^18.0.3",
     "@types/next": "^9.0.0",
+    "@types/node": "^18.0.3",
     "@types/react": "18.0.14",
     "@types/react-dom": "^18.0.6",
     "eslint": "8.19.0",

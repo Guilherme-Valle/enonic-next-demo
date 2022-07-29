@@ -1,5 +1,8 @@
 import { ProductType } from '../parts/ProductsList';
 import styles from '../../styles/ProductsListItem.module.css';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+import { Button, IconButton } from '@mui/material';
 
 export default function ProductsListItem(props: ProductType) {
     return (
@@ -11,8 +14,17 @@ export default function ProductsListItem(props: ProductType) {
                         title={props.name}></img> : ''}
             </div>
             <div className={styles.ProductsListItem__actions}>
-                <div>{props.name} - ${props.price}</div>
-                <div>Actions</div>
+                <div>
+                    {props.name} - ${props.price}
+                </div>
+                <div className={styles.ProductListItem__actions_buttons}>
+                    <IconButton>
+                        <RemoveIcon sx={{color: 'red'}} />
+                    </IconButton>
+                    <IconButton>
+                        <AddIcon sx={{color: 'green'}} />
+                    </IconButton>
+                </div>
             </div>
         </div>
     )
