@@ -1,4 +1,4 @@
-import { Dialog, DialogContent, DialogTitle, Table, TableCell, TableContainer, TableHead, TableRow } from "@mui/material"
+import { Dialog, DialogActions, DialogContent, DialogTitle, Table, TableCell, TableContainer, TableHead, TableRow } from "@mui/material"
 
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
@@ -33,6 +33,10 @@ export default function CartDialog(props: DialogType) {
         });
 
         return counter;
+    }
+
+    const getCartPrice = () => {
+        return cartState.reduce((previousPrice: number, currentProduct: ProductType) => previousPrice + currentProduct.price, 0);
     }
 
     return (
@@ -89,6 +93,9 @@ export default function CartDialog(props: DialogType) {
                         </Table>
                     </TableContainer>
                     : 'The cart is empty!'}
+                <DialogActions sx={{ textAlign: 'right' }}>
+                    Price: ${getCartPrice()}
+                </DialogActions>
             </DialogContent>
         </Dialog>
     )
